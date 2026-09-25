@@ -224,11 +224,14 @@ GameObject:
   - component: {fileID: 2531916531622151941}
   - component: {fileID: 5313331207413681179}
   - component: {fileID: 5593435794571569569}
-  - component: {fileID: 7314116304991583672}
-  - component: {fileID: -2744094669604489198}
-  - component: {fileID: -7822009965047864486}
+  - component: {fileID: 4176872669809846771}
+  - component: {fileID: 1641964220169718556}
+  - component: {fileID: 6588232982673221110}
+  - component: {fileID: 258999432853073461}
+  - component: {fileID: 5052733901981199013}
+  - component: {fileID: 6426539536415846833}
   m_Layer: 0
-  m_Name: CardPrefab
+  m_Name: CardPrefabDI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -359,7 +362,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &7314116304991583672
+--- !u!114 &4176872669809846771
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -368,9 +371,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 4150696255811078346}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a6aa34c7902a463d8e679a406fda8b4, type: 3}
+  m_Script: {fileID: 11500000, guid: bc22679bd649a49d1b0dcacb06e3e05c, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::InteractableCard
+  m_EditorClassIdentifier: Cards.Adapters::Cards.Adapters.XRCardSelectable
   m_InteractionManager: {fileID: 0}
   m_Colliders: []
   m_InteractionLayers:
@@ -455,7 +458,7 @@ MonoBehaviour:
   m_SmoothRotation: 0
   m_SmoothRotationAmount: 8
   m_TightenRotation: 0.1
-  m_TrackScale: 0
+  m_TrackScale: 1
   m_SmoothScale: 0
   m_SmoothScaleAmount: 8
   m_TightenScale: 0.1
@@ -488,10 +491,8 @@ MonoBehaviour:
   m_LimitAngularVelocity: 0
   m_MaxLinearVelocityDelta: 10
   m_MaxAngularVelocityDelta: 20
-  data: {fileID: 0}
-  visual: {fileID: -2744094669604489198}
   hoverHighlight: {fileID: 0}
---- !u!114 &-2744094669604489198
+--- !u!114 &1641964220169718556
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -500,16 +501,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 4150696255811078346}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 28444444c11e64b4b82fd4ff0bf589a4, type: 3}
+  m_Script: {fileID: 11500000, guid: 343f8af226e904de8b45851f76e602ac, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CardVisual
+  m_EditorClassIdentifier: Cards.Presentation::Cards.Presentation.CardView
   faceRenderer: {fileID: 2298710501352212415}
   titleText: {fileID: 6565228521431168663}
   modelAnchor: {fileID: 6436124046552285187}
   modelMaxSize: 0.06
   spinModel: 1
   spinSpeed: 30
---- !u!114 &-7822009965047864486
+--- !u!114 &6588232982673221110
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -518,15 +519,55 @@ MonoBehaviour:
   m_GameObject: {fileID: 4150696255811078346}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f0819f2a791d4dfcafbfd4e1f5deaa6, type: 3}
+  m_Script: {fileID: 11500000, guid: 2cfdc094bd6f244648836787dc291a22, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CardInspector
+  m_EditorClassIdentifier: Cards.Presentation::Cards.Presentation.CardMotion
   travelDuration: 0.35
-  browseInput: {fileID: -8811388872089202044, guid: c348712bda248c246b8c49b3db54643f, type: 3}
-  browseThreshold: 0.6
-  pulseOnSwap: 1
-  dismissInput: {fileID: -5982496924579745919, guid: c348712bda248c246b8c49b3db54643f, type: 3}
-  restoreOwnCardOnReturn: 1
+--- !u!114 &258999432853073461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4150696255811078346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61602ebef66974387a7f17ec9f6b3cd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Cards.Coordination::Cards.Coordination.CardFacade
+--- !u!114 &5052733901981199013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4150696255811078346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08eca9f7688a0a24685b89133b020c8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Zenject::Zenject.GameObjectContext
+  _scriptableObjectInstallers: []
+  _monoInstallers:
+  - {fileID: 6426539536415846833}
+  _installerPrefabs: []
+  _autoRun: 1
+  _kernel: {fileID: 0}
+--- !u!114 &6426539536415846833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4150696255811078346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b95e1bfdc47e5438b8ce4df102c5ef3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Cards.Installers::Cards.Installers.CardPrefabInstaller
+  selectable: {fileID: 4176872669809846771}
+  view: {fileID: 1641964220169718556}
+  motion: {fileID: 6588232982673221110}
 --- !u!1 &5016281607616721174
 GameObject:
   m_ObjectHideFlags: 0

@@ -129,6 +129,7 @@ GameObject:
   m_Component:
   - component: {fileID: 196338317}
   - component: {fileID: 196338318}
+  - component: {fileID: 196338319}
   m_Layer: 0
   m_Name: SceneContext
   m_TagString: Untagged
@@ -164,16 +165,48 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Cards.Installers::Cards.Installers.CardSceneInstaller
   deck: {fileID: 11400000, guid: 477d9e22a66f940d8b1718c6665dd67f, type: 2}
-  inspectAnchor: {fileID: 0}
-  inspectInput: {fileID: 0}
-  cardPrefab: {fileID: 4150696255811078346, guid: 7efad7830a3c74c9196cf812d391580e, type: 3}
+  inspectAnchor: {fileID: 778334591}
+  inspectInput: {fileID: 1269178299}
+  cardPrefab: {fileID: 4150696255811078346, guid: ffb766be30818434084a2f0579ff97a1, type: 3}
   stackSettings:
-    Root: {fileID: 0}
+    Root: {fileID: 1200426343}
     Layout: 1
     StackSpacing: 0.003
-    FanSpacing: 0.05
+    FanSpacing: 0.17
     FanArcAngle: 30
-    UseArc: 1
+    UseArc: 0
+--- !u!114 &196338319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 196338316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89715ad69b973a14899afa2c6730b30b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Zenject::Zenject.SceneContext
+  _scriptableObjectInstallers: []
+  _monoInstallers:
+  - {fileID: 196338318}
+  _installerPrefabs: []
+  _autoRun: 1
+  OnPreInstall:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPostInstall:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPreResolve:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPostResolve:
+    m_PersistentCalls:
+      m_Calls: []
+  _parentNewObjectsUnderSceneContext: 0
+  _contractNames: []
+  _parentContractNames: []
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -660,8 +693,7 @@ Transform:
   m_LocalPosition: {x: -0.245, y: 0.725, z: 0}
   m_LocalScale: {x: 1.2, y: 0.05, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1200426343}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &778334588
@@ -674,6 +706,7 @@ GameObject:
   m_Component:
   - component: {fileID: 778334589}
   - component: {fileID: 778334590}
+  - component: {fileID: 778334591}
   m_Layer: 0
   m_Name: InspectAnchor
   m_TagString: Untagged
@@ -708,6 +741,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cbde08d74d094f489caccfd78cf772d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CardInspectAnchor
+--- !u!114 &778334591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 778334588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d8504e3f6a91444ab74f0bc03c679d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Cards.Presentation::Cards.Presentation.InspectAnchorMarker
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -766,7 +811,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1200426343}
-  - component: {fileID: 1200426344}
   m_Layer: 0
   m_Name: CardStack
   m_TagString: Untagged
@@ -782,32 +826,33 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1200426342}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.287, y: 0.62, z: -0.174}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.58940005, y: 0.75600004, z: -0.174}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 721618553}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1200426344
+--- !u!1 &1269178292 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1717954561962503725, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
+  m_PrefabInstance: {fileID: 1990588129}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1269178299
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1200426342}
+  m_GameObject: {fileID: 1269178292}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9572783663444abeb79eb0424785767, type: 3}
+  m_Script: {fileID: 11500000, guid: ec3b2ba8b65f54a348c010eb59b058da, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CardStackBuilder
-  cardDeck: {fileID: 11400000, guid: 477d9e22a66f940d8b1718c6665dd67f, type: 2}
-  cardPrefab: {fileID: 7314116304991583672, guid: 7efad7830a3c74c9196cf812d391580e, type: 3}
-  layoutMode: 0
-  stackSpacing: 0.003
-  fanSpacing: 0.05
-  fanArcAngle: 30
-  useArc: 1
+  m_EditorClassIdentifier: Cards.Input::Cards.Input.InputActionInspectInput
+  browseInput: {fileID: -8811388872089202044, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  browseThreshold: 0.6
+  dismissInput: {fileID: -5982496924579745919, guid: c348712bda248c246b8c49b3db54643f, type: 3}
 --- !u!1 &1293212489
 GameObject:
   m_ObjectHideFlags: 0
@@ -1110,6 +1155,9 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 778334589}
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1717954561962503725, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1269178299}
     - targetCorrespondingSourceObject: {fileID: 1767192433, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1336875377}
@@ -1146,6 +1194,7 @@ SceneRoots:
   - {fileID: 410087041}
   - {fileID: 832575519}
   - {fileID: 662262440}
+  - {fileID: 1200426343}
   - {fileID: 721618553}
   - {fileID: 1293212491}
   - {fileID: 1889074512}

@@ -96,10 +96,13 @@ namespace Cards.Coordination
 
                 if (settings.UseArc)
                 {
+                    // Cards lie flat on the table (face up, +Y), so the fan
+                    // turns around the vertical axis, pivoting at a point
+                    // `radius` behind the stack like a hand of cards.
                     float radius = settings.FanSpacing * count * 0.5f;
-                    Vector3 baseOffset = new Vector3(0f, radius, 0f);
-                    localPos = Quaternion.Euler(0f, 0f, angle) * baseOffset - baseOffset;
-                    localRot = Quaternion.Euler(0f, 0f, angle);
+                    Vector3 baseOffset = new Vector3(0f, 0f, radius);
+                    localRot = Quaternion.Euler(0f, angle, 0f);
+                    localPos = localRot * baseOffset - baseOffset;
                 }
                 else
                 {
