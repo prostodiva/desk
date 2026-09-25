@@ -705,7 +705,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 778334589}
-  - component: {fileID: 778334590}
   - component: {fileID: 778334591}
   m_Layer: 0
   m_Name: InspectAnchor
@@ -729,18 +728,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1336875378}
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
---- !u!114 &778334590
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 778334588}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5cbde08d74d094f489caccfd78cf772d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CardInspectAnchor
 --- !u!114 &778334591
 MonoBehaviour:
   m_ObjectHideFlags: 0
