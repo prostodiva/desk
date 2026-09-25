@@ -1,0 +1,16 @@
+{
+    "name": "Cards.Installers",
+    "rootNamespace": "Cards.Installers",
+    "references": [
+        "Cards.Core",
+        "Cards.Input",
+        "Cards.Adapters",
+        "Cards.Presentation",
+        "Cards.Coordination",
+        "Zenject",
+        "Unity.XR.Interaction.Toolkit",
+        "Unity.InputSystem",
+        "Unity.TextMeshPro"
+    ],
+    "autoReferenced": true
+}

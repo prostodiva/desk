@@ -1,0 +1,9 @@
+{
+    "name": "Cards.Coordination",
+    "rootNamespace": "Cards.Coordination",
+    "references": [
+        "Cards.Core",
+        "Zenject"
+    ],
+    "autoReferenced": true
+}

@@ -1,0 +1,9 @@
+{
+    "name": "Cards.Input",
+    "rootNamespace": "Cards.Input",
+    "references": [
+        "Cards.Core",
+        "Unity.InputSystem"
+    ],
+    "autoReferenced": true
+}

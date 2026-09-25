@@ -1,0 +1,6 @@
+{
+    "name": "Cards.Core",
+    "rootNamespace": "Cards.Core",
+    "references": [],
+    "autoReferenced": true
+}

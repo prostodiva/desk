@@ -1,0 +1,10 @@
+{
+    "name": "Cards.Adapters",
+    "rootNamespace": "Cards.Adapters",
+    "references": [
+        "Cards.Core",
+        "Unity.XR.Interaction.Toolkit",
+        "Unity.InputSystem"
+    ],
+    "autoReferenced": true
+}

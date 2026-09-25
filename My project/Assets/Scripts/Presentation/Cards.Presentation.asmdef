@@ -1,0 +1,9 @@
+{
+    "name": "Cards.Presentation",
+    "rootNamespace": "Cards.Presentation",
+    "references": [
+        "Cards.Core",
+        "Unity.TextMeshPro"
+    ],
+    "autoReferenced": true
+}
