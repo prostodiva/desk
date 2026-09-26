@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CardData
   title: Mitohondria
   modelPrefab: {fileID: 919132149155446097, guid: fe2a4523973824173a099fac16c472f9, type: 3}
-  thumbnail2D: {fileID: 21300000, guid: 5a4f30104f0e14fe09bc03e078a33ebd, type: 3}
+  thumbnail: {fileID: 21300000, guid: 5a4f30104f0e14fe09bc03e078a33ebd, type: 3}
+  description: ' the description bla-bla'

@@ -37,6 +37,7 @@ namespace Cards.Coordination
             input.NextRequested += OnNext;
             input.PreviousRequested += OnPrevious;
             input.DismissRequested += Dismiss;
+            input.FlipRequested += OnFlip;
         }
 
         public void Dispose()
@@ -44,6 +45,7 @@ namespace Cards.Coordination
             input.NextRequested -= OnNext;
             input.PreviousRequested -= OnPrevious;
             input.DismissRequested -= Dismiss;
+            input.FlipRequested -= OnFlip;
         }
 
         /// <summary>Selecting the inspected card sends it home; any other card takes its place.</summary>
@@ -85,13 +87,31 @@ namespace Cards.Coordination
             input.Disable();
         }
 
+        /// <summary>
+        /// The player picked a card up by hand. If it was the inspected card,
+        /// inspection ends right there: the hand now owns its position.
+        /// </summary>
+        public void OnGrabbed(CardFacade card)
+        {
+            if (card != currentCard) return;
+
+            StopBrowsing();
+            card.RestoreOwnContent();
+            currentCard = null;
+
+            input.Disable();
+        }
+
+        /// <summary>A held card was let go: it always returns to its slot on the table.</summary>
+        public void OnReleased(CardFacade card)
+        {
+            card.SetInteractable(false);
+            card.Motion.MoveHome(() => card.SetInteractable(true));
+        }
+
         private void SendHome(CardFacade card)
         {
-            if (browser != null)
-            {
-                browser.CardChanged -= OnBrowsedToCard;
-                browser = null;
-            }
+            StopBrowsing();
 
             // Browsing left it showing another card's content; put its own back.
             card.RestoreOwnContent();
@@ -100,8 +120,17 @@ namespace Cards.Coordination
             card.Motion.MoveHome(() => card.SetInteractable(true));
         }
 
+        private void StopBrowsing()
+        {
+            if (browser == null) return;
+
+            browser.CardChanged -= OnBrowsedToCard;
+            browser = null;
+        }
+
         private void OnNext() => browser?.Next();
         private void OnPrevious() => browser?.Previous();
+        private void OnFlip() => currentCard?.Motion.Flip();
 
         private void OnBrowsedToCard(CardData data)
         {

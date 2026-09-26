@@ -15,7 +15,12 @@ namespace Cards.Core
         [FormerlySerializedAs("thumbnail2D")]
         [SerializeField] private Sprite thumbnail;
 
+        [Tooltip("Shown on the back of the card.")]
+        [TextArea(3, 10)]
+        [SerializeField] private string description;
+
         public string Title => title;
+        public string Description => description;
         public GameObject ModelPrefab => modelPrefab;
         public Sprite Thumbnail => thumbnail;
     }

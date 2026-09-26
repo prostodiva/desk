@@ -239,7 +239,9 @@ else uses the interface (`ICardSelectable.cs:9`):
 ```csharp
 public interface ICardSelectable
 {
-    event Action Selected;
+    event Action InspectRequested;
+    event Action Grabbed;
+    event Action Released;
     bool InteractionEnabled { get; set; }
 }
 ```

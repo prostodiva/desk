@@ -17,6 +17,7 @@ namespace Cards.Presentation
     public class CardMotion : MonoBehaviour, ICardMotion
     {
         [SerializeField] private float travelDuration = 0.35f;
+        [SerializeField] private float flipDuration = 0.3f;
 
         private Rigidbody rb;
         private Transform homeParent;
@@ -46,6 +47,14 @@ namespace Cards.Presentation
         public void MoveHome(Action onComplete = null)
         {
             Restart(HomeRoutine(onComplete));
+        }
+
+        public void Flip()
+        {
+            // Interrupting a flight would drop its onComplete, which is what
+            // makes the card selectable again.
+            if (routine != null) return;
+            routine = StartCoroutine(FlipRoutine());
         }
 
         private void Restart(IEnumerator next)
@@ -115,6 +124,28 @@ namespace Cards.Presentation
 
             routine = null;
             onComplete?.Invoke();
+        }
+
+        /// <summary>
+        /// Half-turn around the card's long axis (local Z), like turning a
+        /// page. Going home restores the home rotation, so a flipped card
+        /// always lands face up.
+        /// </summary>
+        private IEnumerator FlipRoutine()
+        {
+            Quaternion start = transform.localRotation;
+
+            float t = 0f;
+            while (t < flipDuration)
+            {
+                t += Time.deltaTime;
+                float eased = Mathf.SmoothStep(0f, 1f, t / flipDuration);
+                transform.localRotation = start * Quaternion.AngleAxis(180f * eased, Vector3.forward);
+                yield return null;
+            }
+
+            transform.localRotation = start * Quaternion.AngleAxis(180f, Vector3.forward);
+            routine = null;
         }
 
         private void Freeze()

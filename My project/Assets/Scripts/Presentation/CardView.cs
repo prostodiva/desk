@@ -16,6 +16,13 @@ namespace Cards.Presentation
         [Header("Title")]
         [SerializeField] private TMP_Text titleText;
 
+        [Header("Back (optional)")]
+        [Tooltip("Title repeated on the back of the card.")]
+        [SerializeField] private TMP_Text backTitleText;
+
+        [Tooltip("Description text on the back of the card.")]
+        [SerializeField] private TMP_Text descriptionText;
+
         [Header("3D Model")]
         [SerializeField] private Transform modelAnchor;
 
@@ -33,6 +40,7 @@ namespace Cards.Presentation
 
             ApplyThumbnail(data);
             ApplyTitle(data);
+            ApplyBack(data);
             SpawnModel(data);
         }
 
@@ -45,6 +53,12 @@ namespace Cards.Presentation
         private void ApplyTitle(CardData data)
         {
             if (titleText != null) titleText.text = data.Title;
+        }
+
+        private void ApplyBack(CardData data)
+        {
+            if (backTitleText != null) backTitleText.text = data.Title;
+            if (descriptionText != null) descriptionText.text = data.Description;
         }
 
         private void SpawnModel(CardData data)

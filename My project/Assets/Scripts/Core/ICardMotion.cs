@@ -12,5 +12,8 @@ namespace Cards.Core
         void MoveToAnchor(Transform anchor, Action onComplete = null);
         void MoveHome(Action onComplete = null);
         void CaptureHome();
+
+        /// <summary>Turns the card over in place. Ignored while it's still moving.</summary>
+        void Flip();
     }
 }

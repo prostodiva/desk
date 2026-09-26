@@ -1,0 +1,56 @@
+{
+    "name": "CardInputActions",
+    "maps": [
+        {
+            "name": "Card",
+            "id": "5b1f2c6e-8d4a-4f3b-9c21-7e0a6d3b9f41",
+            "actions": [
+                {
+                    "name": "Flip",
+                    "type": "Button",
+                    "id": "c3e8a1d2-4b7f-4e69-a0d5-2f9b6c1e8a73",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "e7a4b2c9-1f3d-4a8e-b6c0-9d2e5f7a1b34",
+                    "path": "<XRController>{RightHand}/primaryButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Flip",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a9d1c3e5-7b2f-4c6a-8e0d-3f5b7a9c1e26",
+                    "path": "<XRController>{LeftHand}/primaryButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Flip",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f2b6d8a0-3c5e-4d7b-9a1f-6e8c0b2d4f58",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Flip",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

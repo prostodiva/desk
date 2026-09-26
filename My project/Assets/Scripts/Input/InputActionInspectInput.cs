@@ -25,15 +25,25 @@ namespace Cards.Input
         [Tooltip("Button action that sends the inspected card back to the table.")]
         [SerializeField] private InputActionReference dismissInput;
 
+        [Header("Flip")]
+        [Tooltip("Button action that turns the inspected card over — e.g. the primary button (A/X).")]
+        [SerializeField] private InputActionReference flipInput;
+
         public event Action NextRequested;
         public event Action PreviousRequested;
         public event Action DismissRequested;
+        public event Action FlipRequested;
 
         private bool listening;
         private bool stickCentered = true;
 
         public void Enable()
         {
+            // Inspecting a second card while one is up calls Enable again;
+            // subscribing twice would fire every button twice (and a double
+            // flip looks like no flip).
+            if (listening) return;
+
             listening = true;
             stickCentered = true;
 
@@ -44,6 +54,12 @@ namespace Cards.Input
                 dismissInput.action.Enable();
                 dismissInput.action.performed += OnDismiss;
             }
+
+            if (flipInput != null)
+            {
+                flipInput.action.Enable();
+                flipInput.action.performed += OnFlip;
+            }
         }
 
         public void Disable()
@@ -52,11 +68,19 @@ namespace Cards.Input
 
             if (dismissInput != null)
                 dismissInput.action.performed -= OnDismiss;
+
+            if (flipInput != null)
+                flipInput.action.performed -= OnFlip;
         }
 
         private void OnDismiss(InputAction.CallbackContext _)
         {
             if (listening) DismissRequested?.Invoke();
+        }
+
+        private void OnFlip(InputAction.CallbackContext _)
+        {
+            if (listening) FlipRequested?.Invoke();
         }
 
         private void Update()

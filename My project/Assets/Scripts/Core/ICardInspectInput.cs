@@ -11,6 +11,7 @@ namespace Cards.Core
         event Action NextRequested;
         event Action PreviousRequested;
         event Action DismissRequested;
+        event Action FlipRequested;
 
         void Enable();
         void Disable();

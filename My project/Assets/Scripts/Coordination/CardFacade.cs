@@ -33,10 +33,23 @@ namespace Cards.Coordination
             this.inspection = inspection;
         }
 
-        private void OnEnable() => selectable.Selected += OnSelected;
-        private void OnDisable() => selectable.Selected -= OnSelected;
+        private void OnEnable()
+        {
+            selectable.InspectRequested += OnInspectRequested;
+            selectable.Grabbed += OnGrabbed;
+            selectable.Released += OnReleased;
+        }
 
-        private void OnSelected() => inspection.Toggle(this);
+        private void OnDisable()
+        {
+            selectable.InspectRequested -= OnInspectRequested;
+            selectable.Grabbed -= OnGrabbed;
+            selectable.Released -= OnReleased;
+        }
+
+        private void OnInspectRequested() => inspection.Toggle(this);
+        private void OnGrabbed() => inspection.OnGrabbed(this);
+        private void OnReleased() => inspection.OnReleased(this);
 
         /// <summary>Assigns this card's own content and renders it.</summary>
         public void SetData(CardData data)
