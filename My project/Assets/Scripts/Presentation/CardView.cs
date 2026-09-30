@@ -46,7 +46,12 @@ namespace Cards.Presentation
 
         private void ApplyThumbnail(CardData data)
         {
-            if (faceRenderer == null || data.Thumbnail == null) return;
+            if (faceRenderer == null) return;
+            if (data.Thumbnail == null) {
+                faceRenderer.material.mainTexture = null;
+                        return;
+            }
+
             faceRenderer.material.mainTexture = data.Thumbnail.texture;
         }
 
