@@ -112,12 +112,7 @@ InitTestScene*.unity*
 /[Aa]ssets/Scripts/docs/STUDY_PLAN.md*
 /[Aa]ssets/Scripts/docs/study_plan_answ.md*
 /[Aa]ssets/Scripts/docs/presentation_script.*
-
-# Burst build leftovers
-*_BurstDebugInformation_DoNotShip/
-/[Aa]ssets/Scripts/docs/STUDY_PLAN.md*
-/[Aa]ssets/Scripts/docs/study_plan_answ.md*
-/[Aa]ssets/Scripts/docs/presentation_script.*
+/[Aa]ssets/Scripts/docs/trace_practice.md*
 
 # Burst build leftovers
 *_BurstDebugInformation_DoNotShip/
