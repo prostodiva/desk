@@ -1,3 +1,6 @@
+// Editor-only demo banner: it uses UnityEditor (SceneView, Handles), which
+// doesn't exist in player builds, so the whole file compiles only in the editor.
+#if UNITY_EDITOR
 using UnityEngine;
 using UnityEditor;
 
@@ -54,5 +57,4 @@ namespace FastMesh_Example
         }
     }
 }
-
-
+#endif

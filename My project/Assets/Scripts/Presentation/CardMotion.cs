@@ -99,9 +99,9 @@ namespace Cards.Presentation
 
             Vector3 startPos = transform.position;
             Quaternion startRot = transform.rotation;
-
+            //Put it back under CardStack
             transform.SetParent(homeParent, worldPositionStays: true);
-
+            //Work out the target in world space
             Vector3 targetPos = homeParent != null
                 ? homeParent.TransformPoint(homeLocalPosition)
                 : homeLocalPosition;
@@ -110,6 +110,7 @@ namespace Cards.Presentation
                 : homeLocalRotation;
 
             float t = 0f;
+            //Fly a little each frame
             while (t < travelDuration)
             {
                 t += Time.deltaTime;
@@ -119,10 +120,13 @@ namespace Cards.Presentation
                 yield return null;
             }
 
+            //Snap exactly into the slot
             transform.localPosition = homeLocalPosition;
             transform.localRotation = homeLocalRotation;
 
+            //"not moving any more", Flip may run again
             routine = null;
+            //SetInteractable(true): the card can be used again
             onComplete?.Invoke();
         }
 

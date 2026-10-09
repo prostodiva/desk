@@ -1,4 +1,5 @@
 {
+    "version": 1,
     "name": "CardInputActions",
     "maps": [
         {
@@ -9,7 +10,16 @@
                     "name": "Flip",
                     "type": "Button",
                     "id": "c3e8a1d2-4b7f-4e69-a0d5-2f9b6c1e8a73",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "dismiss",
+                    "type": "Button",
+                    "id": "b4aa3639-f023-4e7c-8b06-10af38203e8a",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -46,6 +56,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Flip",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "37ba27f4-ce8e-4139-9d92-47ee6ddd9ca5",
+                    "path": "<XRController>{LeftHand}/{TriggerButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "dismiss",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0723d228-c4ed-498b-960d-72889b990fcf",
+                    "path": "<XRController>{RightHand}/{TriggerButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "dismiss",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
