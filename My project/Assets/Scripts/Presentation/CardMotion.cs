@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using Cards.Core;
 using UnityEngine;
-
 namespace Cards.Presentation
 {
     /// <summary>
@@ -24,6 +23,7 @@ namespace Cards.Presentation
         private Vector3 homeLocalPosition;
         private Quaternion homeLocalRotation;
         private Coroutine routine;
+        private Action pendingOnComplete;
 
         private void Awake()
         {
@@ -41,31 +41,48 @@ namespace Cards.Presentation
         public void MoveToAnchor(Transform anchor, Action onComplete = null)
         {
             if (anchor == null) return;
-            Restart(ToAnchorRoutine(anchor, onComplete));
+            Restart(ToAnchorRoutine(anchor), onComplete);
         }
 
         public void MoveHome(Action onComplete = null)
         {
-            Restart(HomeRoutine(onComplete));
+            Restart(HomeRoutine(), onComplete);
         }
 
         public void Flip()
         {
-            // Interrupting a flight would drop its onComplete, which is what
-            // makes the card selectable again.
-            if (routine != null) return;
-            routine = StartCoroutine(FlipRoutine());
+            Restart(FlipRoutine(), null);
         }
 
-        private void Restart(IEnumerator next)
+        /// <summary>
+        /// Latest command wins. The interrupted routine's onComplete is invoked
+        /// immediately, so completion-tied state (e.g. re-enabling selection)
+        /// is never silently dropped.
+        /// </summary>
+        private void Restart(IEnumerator next, Action onComplete)
         {
-            if (routine != null) StopCoroutine(routine);
-            routine = StartCoroutine(next);
+            if (routine != null)
+            {
+                StopCoroutine(routine);
+                pendingOnComplete?.Invoke();   // interrupted — complete it now
+            }
+            pendingOnComplete = onComplete;
+            routine = StartCoroutine(Run(next));
         }
 
-        private IEnumerator ToAnchorRoutine(Transform anchor, Action onComplete)
+        private IEnumerator Run(IEnumerator inner)
         {
             Freeze();
+            yield return inner;
+            var onComplete = pendingOnComplete;
+            pendingOnComplete = null;
+            routine = null;
+            onComplete?.Invoke();
+        }
+
+
+        private IEnumerator ToAnchorRoutine(Transform anchor)
+        {
 
             Vector3 startPos = transform.position;
             Quaternion startRot = transform.rotation;
@@ -88,14 +105,10 @@ namespace Cards.Presentation
 
             transform.localPosition = Vector3.zero;
             transform.localRotation = Quaternion.identity;
-
-            routine = null;
-            onComplete?.Invoke();
         }
 
-        private IEnumerator HomeRoutine(Action onComplete)
+        private IEnumerator HomeRoutine()
         {
-            Freeze();
 
             Vector3 startPos = transform.position;
             Quaternion startRot = transform.rotation;
@@ -123,11 +136,6 @@ namespace Cards.Presentation
             //Snap exactly into the slot
             transform.localPosition = homeLocalPosition;
             transform.localRotation = homeLocalRotation;
-
-            //"not moving any more", Flip may run again
-            routine = null;
-            //SetInteractable(true): the card can be used again
-            onComplete?.Invoke();
         }
 
         /// <summary>
@@ -149,7 +157,6 @@ namespace Cards.Presentation
             }
 
             transform.localRotation = start * Quaternion.AngleAxis(180f, Vector3.forward);
-            routine = null;
         }
 
         private void Freeze()
@@ -159,5 +166,6 @@ namespace Cards.Presentation
             rb.angularVelocity = Vector3.zero;
             rb.isKinematic = true;
         }
+
     }
 }
