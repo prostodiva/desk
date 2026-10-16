@@ -4,7 +4,8 @@
     "references": [
         "Cards.Core",
         "Unity.XR.Interaction.Toolkit",
-        "Unity.InputSystem"
+        "Unity.InputSystem",
+        "Unity.XR.Hands"
     ],
     "autoReferenced": true
 }
